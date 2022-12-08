@@ -1,0 +1,28 @@
+{% extends "base.html" %} 
+{% block content %}
+
+<div class="mt-5">
+  <div class="card" style="width: 30%; margin: auto">
+    <div class="card-body shadow p-3 bg-white rounded">
+      <h2 class="text-center">Registro de Usuarios</h2><br>
+      <form method="post" novalidate>
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <br>
+        <div class="d-grid text-center">
+          <button type="submit" class="btn btn-danger">Crear Usuario</button>
+        </div><br>
+        <div class="d-grid text-center">
+          <a href="{% url 'login' %}" class="btn">Back</a>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  const inputs = document.querySelectorAll("input");
+
+  inputs.forEach((input) => input.classList.add("form-control"));
+
+</script>
+{% endblock %}

@@ -1,0 +1,30 @@
+[
+    {
+      "model": "proyecto.tags",
+      "pk": 1,
+      "fields": {
+        "nombre": "HTML"
+      }
+    },
+    {
+      "model": "proyecto.tags",
+      "pk": 2,
+      "fields": {
+        "nombre": "CSS"
+      }
+    },
+    {
+      "model": "proyecto.tags",
+      "pk": 3,
+      "fields": {
+        "nombre": "Python"
+      }
+    },
+    {
+      "model": "proyecto.tags",
+      "pk": 4,
+      "fields": {
+        "nombre": "JavaScript"
+      }
+    }
+]
