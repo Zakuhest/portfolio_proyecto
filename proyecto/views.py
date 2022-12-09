@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 from django.views.generic import TemplateView, CreateView, View, ListView
 from django.core.mail import send_mail
 from .forms import NewUserForm, NewProject, SendEmailForm
-from .models import Proyectos
+from .models import Proyectos, Tags
 from portfolio.settings import EMAIL_HOST_USER
 # Create your views here.
 
@@ -48,3 +49,13 @@ class email(View):
         else:
             return redirect('email')
 
+def detailsOneProject(request, id):
+    proyecto = Proyectos.objects.get(pk=id)
+    tags = Tags.objects.get(pk=proyecto.tags_id)
+
+    context = {
+        "proyecto": proyecto,
+        "tags": tags,
+    }
+
+    return render(request, "projects/details.html", context)

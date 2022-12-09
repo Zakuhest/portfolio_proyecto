@@ -1,0 +1,40 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
+<div style="margin-top: 50px; display: flex; justify-content: center;" class="about wow fadeInUp">
+    <a href="{% url 'index' %}" class="btn"><h1 class="text-white font-weight-bold">PortfolioDev - Home</h1></a>
+</div>
+<div class="about wow fadeInUp" data-wow-delay="0.1s" style="margin-top: 150px;">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-img">
+                    <img src="{% static 'img/about.webp' %}" alt="Image">
+                    <!-- <img src="{{ project.url_foto }}" alt="Image"> -->
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-content">
+                    <div class="section-header text-left">
+                        <h2>{{ proyecto.proyecto }}</h2>
+                    </div>
+                    <div class="about-text">
+                        <h3>Descripción</h3>
+                        <p>
+                            {{ proyecto.descripcion }}
+                        </p>
+                        <h3>GitHub</h3>
+                        <p>
+                            <a href="{{ proyecto.github }}"><i class="fa- fa-github"></i>{{ proyecto.github }}</a>
+                        </p>
+                        <h4>Tags</h4>
+                        <p>
+                            <a class="btn text-white">{{ tags.nombre }}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

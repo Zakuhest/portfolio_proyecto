@@ -1,7 +1,7 @@
 {% extends "base.html" %} 
 {% block content %}
 
-<div class="mt-5">
+<div class="mt-5 wow fadeInUp">
   <div class="card" style="width: 25%; margin: auto">
     <div class="card-body shadow p-3 bg-white rounded">
       <h2 class="text-center">Registro de Proyectos</h2><br>
@@ -10,11 +10,11 @@
         {{ form.as_p }}
         <br>
         <div class="d-grid text-center">
-          <button type="submit" class="btn btn-danger" >Añadir Proyecto</button>
+          <button type="submit" class="btn wow fadeInUp" >Añadir Proyecto</button>
         </div>
         <br>
         <div class="d-grid text-center">
-        <a href="{% url 'index' %}" class="btn">Home</a>
+        <a href="{% url 'index' %}" class="btn wow fadeInUp">Home</a>
         </div>
       </form>
     </div>

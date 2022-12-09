@@ -1,7 +1,7 @@
 {% extends "base.html" %} 
 {% block content %}
 
-<div class="mt-5">
+<div class="mt-5 wow fadeInUp">
   <div class="card" style="width: 30%; margin: auto">
     <div class="card-body shadow p-3 bg-white rounded">
       <h2 class="text-center">Registro de Usuarios</h2><br>
@@ -9,11 +9,11 @@
         {% csrf_token %} 
         {{ form.as_p }}
         <br>
-        <div class="d-grid text-center">
-          <button type="submit" class="btn btn-danger">Crear Usuario</button>
+        <div class="d-grid text-center ">
+          <button type="submit" class="btn wow fadeInUp">Crear Usuario</button>
         </div><br>
         <div class="d-grid text-center">
-          <a href="{% url 'login' %}" class="btn">Back</a>
+          <a href="{% url 'login' %}" class="btn wow fadeInUp">Back</a>
           </div>
       </form>
     </div>

@@ -6,7 +6,8 @@ urlpatterns=[
     path('portfolio/', views.index.as_view(), name="index"),
     path('portfolio/accounts/login/', LoginView.as_view(), name="login"),
     path('portfolio/accounts/register/', views.RegisterView.as_view(), name='register'),
-    path('portfolio/register_project/', views.RegisterProjectView.as_view(), name='registerProject'),
+    path('portfolio/project/register', views.RegisterProjectView.as_view(), name='registerProject'),
     path('portfolio/logout/', logout_then_login, name='logout'),
-    path('portfolio/contact/', views.email.as_view(), name='email')
+    path('portfolio/contact/', views.email.as_view(), name='email'),
+    path('portfolio/proyect/<int:id>/details/', views.detailsOneProject, name='detailsOne'),
 ]
