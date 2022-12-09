@@ -1,18 +1,16 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, CreateView, View
+from django.views.generic import TemplateView, CreateView, View, ListView
 from django.core.mail import send_mail
 from .forms import NewUserForm, NewProject, SendEmailForm
 from .models import Proyectos
 from portfolio.settings import EMAIL_HOST_USER
 # Create your views here.
 
-class index(TemplateView):
+class index(ListView):
     template_name = "index.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["proyectos"] = Proyectos.objects.all()
-        return context
+    paginate_by = 6
+    model = Proyectos
+    ordering = ["id"]
 
 class RegisterView(CreateView):
     template_name = "registration/register.html"
@@ -49,3 +47,4 @@ class email(View):
             return redirect('index')
         else:
             return redirect('email')
+

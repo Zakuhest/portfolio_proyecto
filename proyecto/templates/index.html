@@ -12,20 +12,19 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
-                        <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
+                        <a href="#home" class="nav-item nav-link active font-weight-bold">Home</a>
                         <a href="#about" class="nav-item nav-link">Sobre Mí</a>
                         <a href="#service" class="nav-item nav-link">Servicios</a>
                         <a href="#experience" class="nav-item nav-link">Experiencia</a>
                         <a href="#projects" class="nav-item nav-link">Proyectos</a>
                         <a href="#price" class="nav-item nav-link">Price</a>
-                        <a href="#blog" class="nav-item nav-link">Blog</a>
                         <a href="#contact" class="nav-item nav-link">Contacto</a>
                     </div>
                 </div>
                 <div class="hero-content">
                     <div class="hero-btn">
                 {% if request.user.is_authenticated %}
-                        |<a class="btn" href=""><strong>Usuario: </strong>{{ request.user.username }}</a>|
+                        <a class="font-weight-bold text-dark"><strong>| Usuario: </strong>{{ request.user.username }} <strong>|</strong> </a>  
                         <a class="btn" href="{% url 'logout' %}">Logout</a>
                 {% else %}
                 <a class="btn" href="{% url 'login' %}">Login</a>
@@ -50,7 +49,6 @@
                                 <div class="typed-text">Web Designer, Web Developer, Front End Developer, Apps Designer, Apps Developer</div>
                             </div>
                             <div class="hero-btn">
-                                <a class="btn" href="">Hire Me</a>
                                 <a class="btn" href="{% url 'email' %}">Contáctame</a>
                             </div>
                         </div>
@@ -261,7 +259,7 @@
         
         
         <!-- Banner Start -->
-        <div class="banner wow zoomIn" data-wow-delay="0.1s">
+        <div class="banner wow zoomIn" data-wow-delay="0.1s" id="price">
             <div class="container">
                 <div class="section-header text-center">
                     <p>Reasonable Price</p>
@@ -297,11 +295,12 @@
                     </div>
                 </div>
                 <div class="row portfolio-container">
-                    {% for project in proyectos %}
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+                    {% for project in page_obj %}
+                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-{{ project.tags_id }} wow fadeInUp" data-wow-delay="0.0s">
                         <div class="portfolio-wrap">
                             <div class="portfolio-img">
-                                <img src="{{ project.url_foto }}" alt="Image">
+                                <!-- <img src="{{ project.url_foto }}" alt="Image"> -->
+                                <img src="{% static 'img/portfolio-1.jpg' %}" alt="Image">
                             </div>
                             <div class="portfolio-text">
                                 <h3>{{ project.proyecto }}</h3>
@@ -310,6 +309,34 @@
                         </div>
                     </div>
                     {% endfor %}
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+                        {% if request.user.is_authenticated and request.user.is_superuser %}
+                        <a class="btn" href="{% url 'registerProject' %}">Añadir Proyecto</a>
+                        {% endif %}
+                        <div class="pagination" style="display: flex; justify-content: center;">
+                            <span class="step-links">
+                            <br>
+                                {% if page_obj.has_previous %}
+                                    <a href="?page=1&&?#projects" class="btn">&laquo; Primera</a>
+                                    <a href="?page={{ page_obj.previous_page_number }}&&?#projects" class="btn">&laquo;Anterior</a>
+                                {% endif %}
+                                <br><br>
+                                <div class="container">
+                                <span class="current">
+                                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                                </span>
+                                </div>
+                                <br>
+                                {% if page_obj.has_next %}
+                                    <a href="?page={{ page_obj.next_page_number }}&&?#projects" class="btn">Siguiente &raquo;</a>
+                                    <a href="?page={{ page_obj.paginator.num_pages }}&&?#projects" class="btn"> Último &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
                     <!-- <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-2 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="portfolio-wrap">
                             <div class="portfolio-img">
@@ -366,14 +393,7 @@
                         </div>
                     </div> -->
                 </div>
-                {% if request.user.is_authenticated and request.user.is_superuser %}
-                <br><br>
-                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <a class="btn" href="{% url 'registerProject' %}">Añadir Proyecto</a>
-                </div>
-                {% endif %}
             </div>
-        </div>
 
         <!-- Footer Start -->
         <div class="footer wow fadeIn" data-wow-delay="0.3s" id="contact">
@@ -387,16 +407,14 @@
                             <p>crisdic5@gmail.com</p>
                         </div>
                         <div class="footer-social">
-                            <a href=""><i class="fab fa-twitter"></i></a>
-                            <a href=""><i class="fab fa-facebook-f"></i></a>
-                            <a href=""><i class="fab fa-youtube"></i></a>
-                            <a href=""><i class="fab fa-instagram"></i></a>
-                            <a href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.facebook.com/cr.d.dc1/"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/cris.dc0.0/"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/cristiandiazcap/"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="container copyright">
-                    <p>&copy; <a href="#">PortfolioDev</a>, All Right Reserved | Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                    <p>&copy; <a href="#">PortfolioDev</a>, All Right Reserved</p>
                 </div>
             </div>
         </div>

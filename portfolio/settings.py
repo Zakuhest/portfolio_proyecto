@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'proyecto.middleware.IPIsValid',
 ]
 
 ROOT_URLCONF = 'portfolio.urls'
@@ -143,3 +144,5 @@ EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'crisdic5@gmail.com'
 EMAIL_HOST_PASSWORD = 'cxwrawrwchnbqydz'
 EMAIL_USE_TLS = True
+
+# CSRF_TRUSTED_ORIGINS = ['dominio generado en railway sin el slash final']

@@ -15,4 +15,4 @@ class Proyectos(models.Model):
 
 class Visitantes(models.Model):
     ip = models.CharField(max_length=50)
-    momento_registrado = models.DateField(null=True)
+    momento_registrado = models.DateTimeField(auto_now_add=True, null=True)
