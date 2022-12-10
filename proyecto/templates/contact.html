@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="mt-5">
+
+{% if request.user.is_authenticated %}
+<div class="mt-5 wow fadeInUp">
     <div class="card" style="width: 20%; margin: auto">
       <div class="card-body shadow p-3 bg-white rounded">
         <h2 class="text-center">Contacto</h2><br>
@@ -8,17 +10,29 @@
           {% csrf_token %} 
           {{ form.as_p }}
           <br>
-          <div class="d-grid text-center">
+          <div class="d-grid text-center wow fadeInUp">
             <button type="submit" class="btn btn-danger" >Enviar Correo</button>
           </div>
           <br>
-          <div class="d-grid text-center">
+          <div class="d-grid text-center wow fadeInUp">
           <a href="{% url 'index' %}" class="btn">Home</a>
           </div>
         </form>
       </div>
     </div>
   </div>
+  {% else %}
+  <div class="wow fadeInUp" style="display: flex; margin-top: 300px;">
+    <div class="card" style="width: 22%; margin: auto">
+      <div class="card-body shadow p-3 bg-danger rounded">
+        <br><br>
+        <a href="{% url 'index' %}">
+        <h2 class="text-center text-white">Login or Register to send an email.</h2><br>
+      </a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
   <script>
     const inputs = document.querySelectorAll("input");
     const text = document.querySelectorAll("textarea");
@@ -28,4 +42,5 @@
               text.classList.add("form-control");
           });
   </script>
+
 {% endblock %}

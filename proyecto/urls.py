@@ -9,5 +9,5 @@ urlpatterns=[
     path('portfolio/project/register', views.RegisterProjectView.as_view(), name='registerProject'),
     path('portfolio/logout/', logout_then_login, name='logout'),
     path('portfolio/contact/', views.email.as_view(), name='email'),
-    path('portfolio/proyect/<int:id>/details/', views.detailsOneProject, name='detailsOne'),
+    path('portfolio/project/<int:id>/details/', views.detailsOneProject, name='detailsOne'),
 ]

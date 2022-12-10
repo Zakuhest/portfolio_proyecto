@@ -1,9 +1,12 @@
 {% extends "base.html" %} 
+{% load static %}
 {% block content %}
 <div class="mt-5 wow fadeInUp">
     <div class="card" style="width: 20%; margin: auto;">
       <div class="card-body shadow p-3 bg-white rounded">
-        <h2 class="text-center">Login</h2>
+        <div class="wow fadeInUp" style="justify-content: center; display: flex;">
+        <img src="{% static 'img/login.png' %}" width="350">
+        </div>
         <form method="post" novalidate>
           {% csrf_token %}
           <div class="row">
@@ -17,9 +20,9 @@
             </div>
             <div class="col-12 d-grid mt-3 text-center"><br>
               <button type="submit" class="btn wow fadeInUp">
-                Iniciar Session
+                Iniciar Sesión
               </button><br><br>
-              <a href="{% url 'index' %}" class="btn wow fadeInUp">Entrar como invitado</a><br><br>
+              <a href="{% url 'index' %}" class="btn wow fadeInUp">Continuar como Invitado</a><br><br>
               <a href="{% url 'register' %}" class="wow fadeInUp">Registrate Aquí</a>
             </div>
           </div>
