@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from django.core.paginator import Paginator
-from django.views.generic import TemplateView, CreateView, View, ListView
+from django.views.generic import CreateView, View, ListView
 from django.core.mail import send_mail
 from .forms import NewUserForm, NewProject, SendEmailForm
 from .models import Proyectos, Tags
