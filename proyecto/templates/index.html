@@ -269,10 +269,9 @@
                     <div class="col-12">
                         <ul id="portfolio-filter">
                             <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-1">HTML</li>
-                            <li data-filter=".filter-2">CSS</li>
-                            <li data-filter=".filter-3">Python</li>
-                            <li data-filter=".filter-4">JavaScript</li>
+                            {% for tag in tags %}
+                            <li data-filter=".filter-{{ tag.id }}">{{ tag }}</li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
