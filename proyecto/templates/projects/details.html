@@ -2,15 +2,16 @@
 {% load static %}
 {% block content %}
 <div style="margin-top: 20px; display: flex; justify-content: center;" class="about wow fadeInUp">
-    <a href="{% url 'index' %}" class="btn"><h1 class="text-white font-weight-bold">PortfolioDev - Home</h1></a>
+    <a href="{% url 'index' %}" class="btn rounded"><h1 class="text-white font-weight-bold">PortfolioDev - Home</h1></a>
 </div>
 <div class="about wow fadeInUp" data-wow-delay="0.1s" style="margin-top: 100px;">
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="about-img">
-                    <img src="{% static 'img/about.webp' %}" alt="Image">
-                    <!-- <img src="{{ project.url_foto }}" alt="Image"> -->
+                    <!-- <img src="{% static 'img/about.webp' %}" alt="Image"> -->
+                    <img src="{{ proyecto.url_foto }}" alt="image" style="height: 600px; border-radius: 50px;">
+                    <!-- <a href="https://imgbb.com/"><img src="https://i.ibb.co/56XpWrw/login.png" alt="login" border="0" /></a> -->
                 </div>
             </div>
             <div class="col-lg-6">
@@ -19,18 +20,23 @@
                         <h2>{{ proyecto.proyecto }}</h2>
                     </div>
                     <div class="about-text">
-                        <h3>Descripción</h3>
+                        <h3 class="font-weight-bold">Descripción</h3>
                         <p>
                             {{ proyecto.descripcion }}
                         </p>
-                        <h3>GitHub</h3>
+                        <h3 class="font-weight-bold">GitHub</h3>
                         <p>
                             <a href="{{ proyecto.github }}"><i class="fab fa-github" style="font-size:24px"></i> {{ proyecto.github }}</a>
                         </p>
-                        <h3>Tags</h3>
+                        <h3 class="font-weight-bold">Tags</h3>
                         <p>
-                            <a class="btn text-white">{{ tags.nombre }}</a>
+                            <a class="font-weight-bold" href="">{{ tags.nombre }}</a>
                         </p>
+                        {% if request.user.is_authenticated and request.user.is_superuser %}
+                        <p>
+                            <a href="{% url 'editProject' proyecto.id %}" class="btn">Editar</a>
+                        </p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

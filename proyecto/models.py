@@ -9,7 +9,7 @@ class Tags(models.Model):
 class Proyectos(models.Model):
     url_foto = models.CharField(max_length=300, default="")
     proyecto = models.CharField(max_length=200)
-    descripcion = models.CharField(max_length=200)
+    descripcion = models.CharField(max_length=600)
     tags = models.ForeignKey(Tags, on_delete = models.CASCADE)
     github = models.CharField(max_length=200)
 

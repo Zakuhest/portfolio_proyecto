@@ -16,8 +16,8 @@
                         <a href="#about" class="nav-item nav-link">Sobre Mí</a>
                         <a href="#service" class="nav-item nav-link">Servicios</a>
                         <a href="#experience" class="nav-item nav-link">Experiencia</a>
-                        <a href="#projects" class="nav-item nav-link">Proyectos</a>
                         <a href="#motivation" class="nav-item nav-link">Motivación</a>
+                        <a href="#projects" class="nav-item nav-link">Proyectos</a>
                         <a href="#contact" class="nav-item nav-link">Contacto</a>
                     </div>
                 </div>
@@ -209,25 +209,28 @@
                         <div class="timeline-text">
                             <div class="timeline-date">2021 - 2022</div>
                             <h2>English Level B2</h2>
-                            <h4>EPIS - UNPRG, Chiclayo, PE</h4>
+                            <h4>EPIS - UNPRG, Lambayeque, PE</h4>
                         </div>
                     </div>
                     <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
                         <div class="timeline-text">
-                            <div class="timeline-date">2022 - ...</div>
+                            <div class="timeline-date">2022 - 2023</div>
                             <h2>Web Developer</h2>
+                            <h4>Bootcamp MTPE, PE</h4>
                         </div>
                     </div>
                     <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
                         <div class="timeline-text">
-                            <div class="timeline-date">2022 - ...</div>
+                            <div class="timeline-date">2022 - 2023</div>
                             <h2>Web Designer</h2>
+                            <h4>Bootcamp MTPE, PE</h4>
                         </div>
                     </div>
                     <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
                         <div class="timeline-text">
-                            <div class="timeline-date">2022 - ...</div>
+                            <div class="timeline-date">2022 - 2023</div>
                             <h2>Database Developer</h2>
+                            <h4>Bootcamp MTPE, PE</h4>
                         </div>
                     </div>
                 </div>
@@ -279,9 +282,9 @@
                     {% for project in page_obj %}
                     <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-{{ project.tags_id }} wow fadeInUp" data-wow-delay="0.0s">
                         <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <!-- <img src="{{ project.url_foto }}" alt="Image"> -->
-                                <img src="{% static 'img/portfolio-1.jpg' %}" alt="Image">
+                            <div class="portfolio-img" style="border-radius: 50px;">
+                                <img src="{{ project.url_foto }}" alt="Image" style="height: 200px;">
+                                <!-- <img src="{% static 'img/portfolio-1.jpg' %}" alt="Image"> -->
                             </div>
                             <div class="portfolio-text">
                                 <h3>{{ project.proyecto }}</h3>

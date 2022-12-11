@@ -3,14 +3,14 @@
       "model": "proyecto.tags",
       "pk": 1,
       "fields": {
-        "nombre": "HTML"
+        "nombre": "Flask"
       }
     },
     {
       "model": "proyecto.tags",
       "pk": 2,
       "fields": {
-        "nombre": "CSS"
+        "nombre": "Django"
       }
     },
     {

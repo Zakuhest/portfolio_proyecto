@@ -1,0 +1,45 @@
+{% extends "base.html" %} 
+{% block content %}
+{% if request.user.is_authenticated and request.user.is_superuser %}
+<div class="mt-5 wow fadeInUp">
+    <div class="card" style="width: 25%; margin: auto">
+    <div class="card-body shadow p-3 bg-white rounded">
+        <h2 class="text-center">Editar Proyecto</h2><br>
+        <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <div class="d-grid text-center">
+            <button type="submit" class="btn wow fadeInUp" >Actualizar</button>
+        </div>
+        <br>
+        <div class="d-grid text-center">
+        <a href="{% url 'detailsOne' proyecto.id %}" class="btn wow fadeInUp">Home</a>
+        </div>
+        </form>
+    </div>
+    </div>
+</div>
+{% else %}
+<div class="wow fadeInUp" style="display: flex; margin-top: 300px;">
+    <div class="card" style="width: 22%; margin: auto">
+    <div class="card-body shadow p-3 bg-danger rounded">
+        <br><br>
+        <a href="{% url 'index' %}">
+        <h2 class="text-center text-white">Not Authorized!!</h2><br>
+        <h2 class="text-center text-white">ERROR!</h2><br>
+    </a>
+    </div>
+    </div>
+</div>
+{% endif %}
+<script>
+    const inputs = document.querySelectorAll("input");
+    const text = document.querySelectorAll("textarea");
+
+    inputs.forEach((input) => input.classList.add("form-control"));
+    text.forEach((text) => {
+            text.classList.add("form-control");
+        });
+</script>
+{% endblock %}
