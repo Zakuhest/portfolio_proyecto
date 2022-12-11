@@ -47,6 +47,7 @@
 - Para la url de la foto del proyecto, se puede utilizar la página: https://postimages.org/es/, para convertir la imagen a url de forma gratuita.
 #
 # Notas:
+- Función de filtros es por paginación.
 - Deploy en Railway: https://portfolioproyecto-production.up.railway.app/portfolio/
 
 - Cuenta de Administrador:
