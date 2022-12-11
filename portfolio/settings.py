@@ -147,4 +147,4 @@ EMAIL_HOST_USER = 'crisdic5@gmail.com'
 EMAIL_HOST_PASSWORD = 'cxwrawrwchnbqydz'
 EMAIL_USE_TLS = True
 
-# CSRF_TRUSTED_ORIGINS = ['dominio generado en railway sin el slash final']
+CSRF_TRUSTED_ORIGINS = ['https://portfolioproyecto-production.up.railway.app']
