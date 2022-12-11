@@ -4,6 +4,9 @@
 # Tipo de proyecto: 
 ## Individual
 #
+# Hecho por:
+## Cristian Diaz C.
+#
 # Funcionalidades:
 ## Formulario para crear un proyecto con los siguientes campos:
 
@@ -32,7 +35,7 @@
 ## Validación de urls según tipo de permisos.
 - Permisos de admin, users y guests
 #
-# Instrucciones
+# Instrucciones:
 (Autenticación/Login y Registro, utiliza lo dado por el mismo framework Django)
 - Migrar tablas a DB
 - Cargar archivo JSON a DB, que contiene Tags
@@ -42,3 +45,14 @@
 - Invitados (Guests) solo pueden visualizar el portfolio y proyectos
 - Administrador (admin/superuser) tiene acceso a todas las funcionalidades, incluyendo añadir y editar proyectos.
 - Para la url de la foto del proyecto, se puede utilizar la página: https://postimages.org/es/, para convertir la imagen a url de forma gratuita.
+#
+# Notas:
+- Deploy en Railway: https://portfolioproyecto-production.up.railway.app/portfolio/
+
+- Cuenta de Administrador:
+
+Usuario: admin
+
+Contraseña: root
+
+- Las siguientes cuentas registradas solo tendrán permisos de usuario.
