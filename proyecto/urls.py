@@ -3,8 +3,7 @@ from django.contrib.auth.views import LoginView, logout_then_login
 from . import views
 
 urlpatterns=[
-    # path('portfolio/', views.Index.as_view(), name="index"),
-    path('portfolio/', views.Index, name="index"),
+    path('portfolio/', views.Index.as_view(), name="index"),
     path('portfolio/accounts/login/', LoginView.as_view(), name="login"),
     path('portfolio/accounts/register/', views.RegisterView.as_view(), name='register'),
     path('portfolio/project/register', views.RegisterProjectView.as_view(), name='registerProject'),
