@@ -19,17 +19,15 @@ from portfolio.settings import EMAIL_HOST_USER
 #         return context
 
 def Index(request):
-    if request.user.is_authenticated:
-        projects_list = Proyectos.objects.filter(user_id=request.user.id)
-        paginator = Paginator(projects_list[0], 6)
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
-        return render(request, 'index.html', {'page_obj': page_obj, 'tags':Tags.objects.all()})
-
     projects_list = Proyectos.objects.all()
     paginator = Paginator(projects_list, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+
+    if request.user.is_authenticated:
+        projects_list = Proyectos.objects.filter(user_id=request.user.id)
+        paginator = Paginator(projects_list[0], 6)
+
     return render(request, 'index.html', {'page_obj': page_obj, 'tags':Tags.objects.all()})
 
 class RegisterView(CreateView):
