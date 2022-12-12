@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.core.paginator import Paginator
 from django.views.generic import CreateView, View, ListView
 from django.core.mail import send_mail
 from .forms import UserForm, ProjectForm, SendEmailForm
@@ -7,28 +6,16 @@ from .models import Proyectos, Tags, User
 from portfolio.settings import EMAIL_HOST_USER
 # Create your views here.
 
-# class Index(ListView):
-#     template_name = "index.html"
-#     paginate_by = 6
-#     model = Proyectos
-#     ordering = ["id"]
+class Index(ListView):
+    template_name = "index.html"
+    paginate_by = 6
+    model = Proyectos
+    ordering = ["id"]
 
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["tags"] = Tags.objects.all()
-#         return context
-
-def Index(request):
-    projects_list = Proyectos.objects.all()
-    paginator = Paginator(projects_list, 6)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-
-    if request.user.is_authenticated:
-        projects_list = Proyectos.objects.filter(user_id=request.user.id)
-        paginator = Paginator(projects_list[0], 6)
-
-    return render(request, 'index.html', {'page_obj': page_obj, 'tags':Tags.objects.all()})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tags"] = Tags.objects.all()
+        return context
 
 class RegisterView(CreateView):
     template_name = "registration/register.html"
@@ -84,8 +71,10 @@ class EditProject(View):
 
     def get(self, request, id):
         proyecto = Proyectos.objects.get(pk=id)
+        user = User.objects.get(pk=proyecto.user_id)
         context = {
             "proyecto": proyecto,
+            "user": user,
             "form": ProjectForm
             }
         return render(request, "projects/edit.html", context)

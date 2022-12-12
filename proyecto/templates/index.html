@@ -181,62 +181,6 @@
         </div>
         <!-- Service End -->
         
-        
-        <!-- Experience Start -->
-        <div class="experience" id="experience">
-            <div class="container">
-                <header class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <p>Tiempo de Experiencia</p>
-                    <h2>Experiencia</h2>
-                </header>
-                <div class="timeline">
-                    <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2016 - 2021</div>
-                            <h2>Engineer Systems</h2>
-                            <h4>UNPRG, Lambayeque, PE</h4>
-                        </div>
-                    </div>
-                    <div class="timeline-item right wow slideInLeft" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2019 - 2020</div>
-                            <h2>Microsoft Office Specialist</h2>
-                            <h4>CETI, Chiclayo, PE</h4>
-                        </div>
-                    </div>
-                    <div class="timeline-item left wow slideInRight" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2021 - 2022</div>
-                            <h2>English Level B2</h2>
-                            <h4>EPIS - UNPRG, Lambayeque, PE</h4>
-                        </div>
-                    </div>
-                    <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2022 - 2023</div>
-                            <h2>Web Developer</h2>
-                            <h4>Bootcamp MTPE, PE</h4>
-                        </div>
-                    </div>
-                    <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2022 - 2023</div>
-                            <h2>Web Designer</h2>
-                            <h4>Bootcamp MTPE, PE</h4>
-                        </div>
-                    </div>
-                    <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2022 - 2023</div>
-                            <h2>Database Developer</h2>
-                            <h4>Bootcamp MTPE, PE</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Job Experience End -->
-        
         <!-- Banner Start -->
         <div class="banner wow zoomIn" data-wow-delay="0.1s" id="motivation">
                 <header class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
@@ -279,7 +223,6 @@
                 </div>
                 <div class="row portfolio-container">
                     {% for project in page_obj %}
-                    {% if request.user.is_authenticated and project.user_id == request.user.id %}
                     <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-{{ project.tags_id }} wow fadeInUp" data-wow-delay="0.0s">
                         <div class="portfolio-wrap">
                             <div class="portfolio-img" style="border-radius: 50px;">
@@ -291,19 +234,6 @@
                             </div>
                         </div>
                     </div>
-                    {% elif not request.user.is_authenticated %}
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-{{ project.tags_id }} wow fadeInUp" data-wow-delay="0.0s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img" style="border-radius: 50px;">
-                                <img src="{{ project.url_foto }}" alt="Image" style="height: 200px;">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>{{ project.proyecto }}</h3>
-                                <a class="btn" href="{% url 'detailsOne' id=project.id %}" style="font-size: 15px;">Ver</a>
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
                     {% endfor %}
                         </div>
                     </div>

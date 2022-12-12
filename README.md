@@ -21,39 +21,32 @@
 - Registro de usuarios (users)
 
 ## Registro de IP que visitan el sitio:
-- Almacenados en DB.
+- Almacenados en DB: Mysql
 
 ## Detalles de proyectos:
 - Visualización de cada proyecto
 - Paginación
 - Filtro por Tags
-- Edición de proyectos
+- Edición de proyectos que le pertenezca a cada usuario.
 
 ## Formulario para envío de correo
-- Solo usuarios registrados
+- Solo usuarios registrados.
 
 ## Validación de urls según tipo de permisos.
-- Permisos de admin, users y guests
+- Permisos según users y guests.
 #
-# Instrucciones:
+# Instrucciones (Sin Railway):
 (Autenticación/Login y Registro, utiliza lo dado por el mismo framework Django)
-- Migrar tablas a DB
+- Migrar tablas a DB 
 - Cargar archivo JSON a DB, que contiene Tags
-- Crear superuser
 - (Opcional: Cargar archivo JSON Dumpsdata)
-- Usuarios solo pueden visualizar portfolio y proyectos, y enviar correos al admin
-- Invitados (Guests) solo pueden visualizar el portfolio y proyectos
-- Administrador (admin/superuser) tiene acceso a todas las funcionalidades, incluyendo añadir y editar proyectos.
-- Para la url de la foto del proyecto, se puede utilizar la página: https://postimages.org/es/, para convertir la imagen a url de forma gratuita.
+- Invitados (Guests) solo pueden visualizar el portfolio y proyectos de todos los usuarios.
+- Para la url de la foto del proyecto, se recomienda utilizar la página: https://postimages.org/es/, para convertir la imagen a url de forma gratuita.
 #
 # Notas:
-- Función de filtros es por paginación.
+- Función de filtros es por página visualizada, no general.
 - Deploy en Railway: https://portfolioproyecto-production.up.railway.app/portfolio/
 
-- Cuenta de Administrador:
+- Los usuarios pueden compartir sus proyectos una vez registrados.
 
-Usuario: admin
-
-Contraseña: root
-
-- Las siguientes cuentas registradas solo tendrán permisos de usuario.
+- Cada usuario puede visualizar sus proyectos y editarlos. Otros usuarios no tendrán acceso a la edición de proyectos que no le pertenezcan, mucho menos si son usuarios anónimos (guests)
