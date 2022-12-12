@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import CreateView, View, ListView
 from django.core.mail import send_mail
 from .forms import UserForm, ProjectForm, SendEmailForm
-from .models import Proyectos, Tags
+from .models import Proyectos, Tags, User
 from portfolio.settings import EMAIL_HOST_USER
 # Create your views here.
 
@@ -34,6 +34,7 @@ class RegisterProjectView(View):
         form = ProjectForm(request.POST)
 
         if form.is_valid():
+            form.cleaned_data["user_id"] = request.user.id
             Proyectos.objects.create(**form.cleaned_data)
             return redirect('index')
         else:
@@ -58,9 +59,11 @@ class DetailsOneProject(View):
     def get(self, request, id):
         proyecto = Proyectos.objects.get(pk=id)
         tags = Tags.objects.get(pk=proyecto.tags_id)
+        user = User.objects.get(pk=proyecto.user_id)
         context = {
             "proyecto": proyecto,
             "tags": tags,
+            "user": user
         }
         return render(request, "projects/details.html", context)
 
@@ -79,6 +82,7 @@ class EditProject(View):
 
         if form.is_valid():
             proyecto = Proyectos.objects.filter(pk=id)
+            form.cleaned_data["user_id"] = proyecto[0].user_id
             proyecto.update(**form.cleaned_data)
             return redirect('detailsOne', id)
         else:

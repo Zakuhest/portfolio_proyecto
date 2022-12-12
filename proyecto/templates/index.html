@@ -263,8 +263,8 @@
         <div class="portfolio" id="projects">
             <div class="container">
                 <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <p>Mis Proyectos del Portfolio</p>
-                    <h2>Mis Proyectos</h2>
+                    <p>Portfolio de Proyectos</p>
+                    <h2>Proyectos</h2>
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -278,11 +278,11 @@
                 </div>
                 <div class="row portfolio-container">
                     {% for project in page_obj %}
+                    {% if request.user.is_authenticated and project.user_id == request.user.id %}
                     <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-{{ project.tags_id }} wow fadeInUp" data-wow-delay="0.0s">
                         <div class="portfolio-wrap">
                             <div class="portfolio-img" style="border-radius: 50px;">
                                 <img src="{{ project.url_foto }}" alt="Image" style="height: 200px;">
-                                <!-- <img src="{% static 'img/portfolio-1.jpg' %}" alt="Image"> -->
                             </div>
                             <div class="portfolio-text">
                                 <h3>{{ project.proyecto }}</h3>
@@ -290,12 +290,25 @@
                             </div>
                         </div>
                     </div>
+                    {% elif not request.user.is_authenticated %}
+                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-{{ project.tags_id }} wow fadeInUp" data-wow-delay="0.0s">
+                        <div class="portfolio-wrap">
+                            <div class="portfolio-img" style="border-radius: 50px;">
+                                <img src="{{ project.url_foto }}" alt="Image" style="height: 200px;">
+                            </div>
+                            <div class="portfolio-text">
+                                <h3>{{ project.proyecto }}</h3>
+                                <a class="btn" href="{% url 'detailsOne' id=project.id %}" style="font-size: 15px;">Ver</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                     {% endfor %}
                         </div>
                     </div>
                     <br>
                     <div class="section-header text-center wow fadeInUp filter-*" data-wow-delay="0.0s" >
-                        {% if request.user.is_authenticated and request.user.is_superuser %}
+                        {% if request.user.is_authenticated %}
                         <a class="btn" href="{% url 'registerProject' %}">Añadir Proyecto</a>
                         {% endif %}
                         <div class="pagination" style="display: flex; justify-content: center;">

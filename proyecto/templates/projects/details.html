@@ -20,6 +20,9 @@
                         <h2>{{ proyecto.proyecto }}</h2>
                     </div>
                     <div class="about-text">
+                        <p>
+                            <a class="font-weight-bold" href=""><strong>By: </strong>{{ user.username }}</a>
+                        </p>
                         <h3 class="font-weight-bold">Descripción</h3>
                         <p>
                             {{ proyecto.descripcion }}
@@ -32,7 +35,7 @@
                         <p>
                             <a class="font-weight-bold" href="">{{ tags.nombre }}</a>
                         </p>
-                        {% if request.user.is_authenticated and request.user.is_superuser %}
+                        {% if request.user.is_authenticated and request.user.id == user.id %}
                         <p>
                             <a href="{% url 'editProject' proyecto.id %}" class="btn">Editar</a>
                         </p>

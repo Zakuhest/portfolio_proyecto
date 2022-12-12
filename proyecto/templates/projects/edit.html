@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 {% block content %}
-{% if request.user.is_authenticated and request.user.is_superuser %}
+{% if request.user.is_authenticated %}
 <div class="mt-5 wow fadeInUp">
     <div class="card" style="width: 25%; margin: auto">
     <div class="card-body shadow p-3 bg-white rounded">
