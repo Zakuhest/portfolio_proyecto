@@ -1,12 +1,9 @@
-# Proyecto: 
-## PortfolioDev
-#
+# Proyecto U5: 
+## Portafolio
 # Tipo de proyecto: 
 ## Individual
-#
 # Hecho por:
-## Cristian Diaz C.
-#
+## Cristian Diaz C. (PortfolioDev)
 # Funcionalidades:
 ## Formulario para crear un proyecto con los siguientes campos:
 
