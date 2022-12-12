@@ -33,7 +33,67 @@
             </div>
         </div>
         <!-- Nav Bar End -->
-
+        <!-- Portfolio Start -->
+        <div class="portfolio" id="projects">
+            <div class="container">
+                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+                    <p>Mis Proyectos del Portfolio</p>
+                    <h2>Mis Proyectos</h2>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <ul id="portfolio-filter">
+                            <li data-filter="*" class="filter-active">All</li>
+                            {% for tag in tags %}
+                            <li data-filter=".filter-{{ tag.id }}">{{ tag }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row portfolio-container">
+                    {% for project in page_obj %}
+                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-{{ project.tags_id }} wow fadeInUp" data-wow-delay="0.0s">
+                        <div class="portfolio-wrap">
+                            <div class="portfolio-img" style="border-radius: 50px;">
+                                <img src="{{ project.url_foto }}" alt="Image" style="height: 200px;">
+                                <!-- <img src="{% static 'img/portfolio-1.jpg' %}" alt="Image"> -->
+                            </div>
+                            <div class="portfolio-text">
+                                <h3>{{ project.proyecto }}</h3>
+                                <a class="btn" href="{% url 'detailsOne' id=project.id %}" style="font-size: 15px;">Ver</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="section-header text-center wow fadeInUp filter-*" data-wow-delay="0.0s" >
+                        {% if request.user.is_authenticated and request.user.is_superuser %}
+                        <a class="btn" href="{% url 'registerProject' %}">Añadir Proyecto</a>
+                        {% endif %}
+                        <div class="pagination" style="display: flex; justify-content: center;">
+                            <span class="step-links">
+                            <br>
+                                <div class="container">
+                                <span class="current">
+                                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                                </span>
+                                </div>
+                                <br>
+                                {% if page_obj.has_previous %}
+                                <a href="?page=1&&?#projects" class="btn">&laquo;Primero</a>
+                                <a href="?page={{ page_obj.previous_page_number }}&&?#projects" class="btn">&laquo;</a>
+                                {% endif %}
+                                {% if page_obj.has_next %}
+                                    <a href="?page={{ page_obj.next_page_number }}&&?#projects" class="btn">&raquo;</a>
+                                    <a href="?page={{ page_obj.paginator.num_pages }}&&?#projects" class="btn"> Último &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!-- Hero Start -->
         <div class="hero" id="home">
             <div class="container-fluid">
@@ -258,69 +318,6 @@
             </div>
         </div>
         <!-- Banner End -->
-
-
-        <!-- Portfolio Start -->
-        <div class="portfolio" id="projects">
-            <div class="container">
-                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <p>Mis Proyectos del Portfolio</p>
-                    <h2>Mis Proyectos</h2>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <ul id="portfolio-filter">
-                            <li data-filter="*" class="filter-active">All</li>
-                            {% for tag in tags %}
-                            <li data-filter=".filter-{{ tag.id }}">{{ tag }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="row portfolio-container">
-                    {% for project in page_obj %}
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-{{ project.tags_id }} wow fadeInUp" data-wow-delay="0.0s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img" style="border-radius: 50px;">
-                                <img src="{{ project.url_foto }}" alt="Image" style="height: 200px;">
-                                <!-- <img src="{% static 'img/portfolio-1.jpg' %}" alt="Image"> -->
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>{{ project.proyecto }}</h3>
-                                <a class="btn" href="{% url 'detailsOne' id=project.id %}" style="font-size: 15px;">Ver</a>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                        </div>
-                    </div>
-                    <br>
-                    <div class="section-header text-center wow fadeInUp filter-*" data-wow-delay="0.0s" >
-                        {% if request.user.is_authenticated and request.user.is_superuser %}
-                        <a class="btn" href="{% url 'registerProject' %}">Añadir Proyecto</a>
-                        {% endif %}
-                        <div class="pagination" style="display: flex; justify-content: center;">
-                            <span class="step-links">
-                            <br>
-                                <div class="container">
-                                <span class="current">
-                                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
-                                </span>
-                                </div>
-                                <br>
-                                {% if page_obj.has_previous %}
-                                <a href="?page=1&&?#projects" class="btn">&laquo;Primero</a>
-                                <a href="?page={{ page_obj.previous_page_number }}&&?#projects" class="btn">&laquo;</a>
-                                {% endif %}
-                                {% if page_obj.has_next %}
-                                    <a href="?page={{ page_obj.next_page_number }}&&?#projects" class="btn">&raquo;</a>
-                                    <a href="?page={{ page_obj.paginator.num_pages }}&&?#projects" class="btn"> Último &raquo;</a>
-                                {% endif %}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         <!-- Footer Start -->
         <div class="footer wow fadeIn" data-wow-delay="0.3s" id="contact">
