@@ -252,12 +252,12 @@
                                 </div>
                                 <br>
                                 {% if page_obj.has_previous %}
-                                <a href="?page=1&&?#projects" class="btn">&laquo;Primero</a>
-                                <a href="?page={{ page_obj.previous_page_number }}&&?#projects" class="btn">&laquo;</a>
+                                <a href="?page=1&&?#portfolio" class="btn">&laquo;Primero</a>
+                                <a href="?page={{ page_obj.previous_page_number }}&&?#portfolio" class="btn">&laquo;</a>
                                 {% endif %}
                                 {% if page_obj.has_next %}
-                                    <a href="?page={{ page_obj.next_page_number }}&&?#projects" class="btn">&raquo;</a>
-                                    <a href="?page={{ page_obj.paginator.num_pages }}&&?#projects" class="btn"> Último &raquo;</a>
+                                    <a href="?page={{ page_obj.next_page_number }}&&?#portfolio" class="btn">&raquo;</a>
+                                    <a href="?page={{ page_obj.paginator.num_pages }}&&?#portfolio" class="btn"> Último &raquo;</a>
                                 {% endif %}
                             </span>
                         </div>
